@@ -16,11 +16,11 @@
 </head>
 <body>
 <select id="basic2" class="show-tick form-control" multiple>
-    <option>Hot Dog, Fries and a Soda</option>
-    <option>Burger, Shake and a Smile</option>
-    <option>Sugar, Spice and all things nice</option>
-    <option>Baby Back Ribs</option>
-    <option>A really really long option made to illustrate an issue with the live search in an inline form</option>
+    <option value="1" >Hot Dog, Fries and a Soda</option>
+    <option value="2" >Burger, Shake and a Smile</option>
+    <option value="3" >Sugar, Spice and all things nice</option>
+    <option value="4" >Baby Back Ribs</option>
+    <option value="5" >A really really long option made to illustrate an issue with the live search in an inline form</option>
 </select>
 
 <script>
@@ -29,9 +29,7 @@
             liveSearch: true,
             maxOptions: 1,
             clickCall:function(e,el,obj){
-                console.log(e);
-                console.log(el);
-                console.log(obj);
+                console.log(e.currentTarget);
             }
         });
     })();

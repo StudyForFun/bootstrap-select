@@ -545,6 +545,7 @@
         var optionClass = this.className || '',
             inline = this.style.cssText,
             text = $this.data('content') ? $this.data('content') : $this.html(),
+            dataId = $this.attr('value') || '',
             tokens = $this.data('tokens') ? $this.data('tokens') : null,
             subtext = typeof $this.data('subtext') !== 'undefined' ? '<small class="text-muted">' + $this.data('subtext') + '</small>' : '',
             icon = typeof $this.data('icon') !== 'undefined' ? '<span class="' + that.options.iconBase + ' ' + $this.data('icon') + '"></span> ' : '',
@@ -561,7 +562,7 @@
 
         if (!$this.data('content')) {
           // Prepend any icon and append any subtext to the main text.
-          text = icon + '<span class="text">' + text + subtext + '</span>';
+          text = icon + '<span class="text" dataId="'+dataId+'">' + text + subtext + '</span>';
         }
 
         if (this.parentElement.tagName === 'OPTGROUP' && $this.data('divider') !== true) {
@@ -575,7 +576,7 @@
                 labelSubtext = typeof $this.parent().data('subtext') !== 'undefined' ? '<small class="text-muted">' + $this.parent().data('subtext') + '</small>' : '',
                 labelIcon = $this.parent().data('icon') ? '<span class="' + that.options.iconBase + ' ' + $this.parent().data('icon') + '"></span> ' : '';
 
-            label = labelIcon + '<span class="text">' + label + labelSubtext + '</span>';
+            label = labelIcon + '<span class="text" dataId="'+dataId+'">' + label + labelSubtext + '</span>';
 
             if (index !== 0 && _li.length > 0) { // Is it NOT the first option of the select && are there elements in the dropdown?
               liIndex++;
