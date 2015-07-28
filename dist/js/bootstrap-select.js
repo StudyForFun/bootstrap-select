@@ -265,6 +265,7 @@
     this.$menu = null;
     this.$lis = null;
     this.options = options;
+    this.options.clickCall = options.clickCall;
 
     // If we have no title yet, try to pull it from the html title attribute (jQuery doesnt' pick it up as it's not a
     // data-attribute)
@@ -1056,11 +1057,14 @@
       });
 
       this.$menuInner.on('click', 'li a', function (e) {
+          //alert('menuClick');
         var $this = $(this),
             clickedIndex = $this.parent().data('originalIndex'),
             prevValue = that.$element.val(),
             prevIndex = that.$element.prop('selectedIndex');
-
+          if(that.options.clickCall){
+              that.options.clickCall(e,that.$element,$this);
+          }
         // Don't close on multi choice menu
         if (that.multiple) {
           e.stopPropagation();
